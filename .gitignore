@@ -1,0 +1,66 @@
+#Backend
+**/build/
+**/out/
+**/target/
+**/logs/
+**/derby.log
+
+#frontend
+**/dist/
+**/distDomain/
+**/**Dist/
+
+# Node
+**/npm-debug.log
+**/node_modules/
+
+
+# Windows
+**/Thumbs.db
+
+#ms vs code
+**/.vscode/
+
+#netbens
+**/.settings/
+**/nbproject/
+**/nb-configuration.xml
+
+#eclipse
+**/.project
+**/.classpath
+**/bin
+/mmf-adm/adm-web/nbproject/private/
+mmf-backend/mmf-adm/adm-model/nb-configuration.xml
+
+#IntelliJ
+**/*.iml
+**/.idea/*
+**/.metadata
+.recommenders/
+
+#code generation
+mmf-backend/mmf-em/em-base/em-base-code-generation/admin/
+#deployed/*.jar
+deployed/*.jar
+deployed/*/*.jar
+
+#database version
+**/.em-database.version
+#macos idea
+**/mmf-backend/**/${project.build.directory}/*
+
+#attachment
+**/attachmentFile/*
+
+#unknown
+mmf-backend/mmf-adm/adm-model/src/main/java/https/siemens_com/ws/
+
+#log
+/mmf-com-di/C:/log/communicate-with-di/*.log
+/mmf-backend/sith-mes/sith-mes-server/src/test/java/com/siemens/mmf/sith/SapRfcCases.java
+/mmf-backend/sith-mes/sith-mes-server/src/test/java/com/siemens/mmf/sith/SapRfcGoodsMoveItem.java
+/mmf-backend/sith-mes/sith-mes-server/src/test/java/com/siemens/mmf/sith/SapUtilsForAQ8.java
+
+#macos
+.DS_Store
