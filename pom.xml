@@ -5,7 +5,7 @@
     <groupId>org.example</groupId>
     <artifactId>test-jenkins</artifactId>
     <packaging>war</packaging>
-    <version>1.0-RELEASE</version>
+    <version>0.0.1-RELEASE</version>
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
     <properties>
