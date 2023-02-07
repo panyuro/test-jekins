@@ -10,25 +10,6 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
-    <distributionManagement>
-        <repository>
-            <id>release-repository</id>
-            <name>release repository</name>
-            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots-repository</id>
-            <name>snapshots repository</name>
-            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>nexus-repository</id>
-            <name>nexus repository</name>
-            <url>http://localhost:8081/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
