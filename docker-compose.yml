@@ -1,0 +1,106 @@
+services:
+  dev:
+    image: openjdk:8
+    links:
+      - postgres
+      - redis
+      - rabbitmq
+    #      - nginx
+    #      - elasticsearch
+    #      - logstash
+    #      - kibana
+    #      - filebeat
+    command: echo 'dev environment started'
+
+  postgres:
+    image: postgres:11.7
+    environment:
+      POSTGRES_USER: sith-mes
+      POSTGRES_PASSWORD: SithMesManager
+      POSTGRES_DB: mes
+    ports:
+      - "5432:5432"
+    volumes:
+      - /usr/postgresql/data:/var/lib/postgresql/data
+    restart: always
+
+  redis:
+    image: redis:5.0.9
+    command: redis-server --requirepass 123456
+    ports:
+      - 6379:6379
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3.8.20-management  # 官方 RabbitMQ 镜像
+    environment:
+      RABBITMQ_DEFAULT_USER: admin     # 设置默认用户名
+      RABBITMQ_DEFAULT_PASS: sith@2023 # 设置默认密码
+    ports:
+      - 5672:5672   # AMQP 协议端口
+      - 15672:15672 # 管理控制台端口
+    volumes:
+      - /usr/rabbitmq/data:/var/lib/rabbitmq
+    restart: always
+
+#  nginx:
+#    image: nginx:1.16.1
+#    container_name: nginx
+#    ports:
+#      - 9999:9999
+#      - 443:443
+#    volumes:
+#      - /etc/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+#      - /etc/nginx/conf/conf.d:/etc/nginx/conf.d
+#      - /etc/nginx/log:/var/log/nginx
+#      - /etc/nginx/html:/usr/share/nginx/html
+#      - /home/sith/deploy:/home/sith/deploy
+#
+#  elasticsearch:
+#    image: elasticsearch:8.4.3
+#    container_name: elasticsearch
+#    environment:
+#      - discovery.type=single-node
+#      - ELASTIC_PASSWORD=sith-mes
+#    ports:
+#      - 9200:9200
+#      - 9300:9300
+#    volumes:
+#      - /etc/elk8.4.3/elasticsearch/config:/usr/share/elasticsearch/config
+#      - /etc/elk8.4.3/elasticsearch/data:/usr/share/elasticsearch/data
+#      - /etc/elk8.4.3/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+#      - /etc/elk8.4.3/elasticsearch/logs:/usr/share/elasticsearch/logs
+#    restart: always
+#
+#  logstash:
+#    image: logstash:8.4.3
+#    container_name: logstash
+#    volumes:
+#      - /etc/elk8.4.3/logstash/config:/usr/share/logstash/config
+#      - /etc/elk8.4.3/logstash/pipeline:/usr/share/logstash/pipeline
+#    restart: always
+#
+#  kibana:
+#    image: kibana:8.4.3
+#    container_name: kibana
+#    ports:
+#      - 5601:5601
+#    depends_on:
+#      - elasticsearch
+#    volumes:
+#      - /etc/elk8.4.3/kibana/config:/usr/share/kibana/config
+#      - /etc/elk8.4.3/kibana/data:/usr/share/kibana/data
+#      - /etc/elk8.4.3/kibana/plugins:/usr/share/kibana/plugins
+#      - /etc/elk8.4.3/kibana/logs:/usr/share/kibana/logs
+#
+#  filebeat:
+#    image: filebeat:8.4.3
+#    container_name: filebeat
+#    volumes:
+#      - /home/sith/deploy/backend/logs:/usr/share/filebeat/target
+#      - /etc/elk8.4.3/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+#      - /etc/elk8.4.3/filebeat/data:/usr/share/filebeat/data
+#      - /etc/elk8.4.3/filebeat/logs:/usr/share/filebeat/logs
+#    restart: always
+#    depends_on:
+#      - logstash
