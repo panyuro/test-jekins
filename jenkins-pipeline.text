@@ -1,0 +1,13 @@
+stage(＇构建镜像＇)｛
+    steps {
+        echo "start build image"
+        sh "${SCRIPT_PATH}/build-images.sh ${MODULE}"
+    {
+{
+stage（＇发布系统＇）｛
+    steps {
+        echo "start deploy"
+        sh "${SCRIPT_PATH}/deploy.sh
+        user-service-deployment ${MODULE}"
+    }
+}
