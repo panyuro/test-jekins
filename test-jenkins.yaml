@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: test-jenkins
+  name: test-jenkins
+spec:
+  #容器内的端口是8080，而映射到外部的端口是80
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8090
+      nodePort: 30000
+  selector:
+    #该Service 选择具有此标签的 Pod 进行流量路由。
+    app: test-jenkins
+  #Service 的类型是 ClusterIP，这表示 Service 只能在集群内部访问。
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-jenkins-deployment
+spec:
+  # 确保运行一个 Pod 的副本
+  replicas: 3
+  selector:
+    #该 Deployment 管理具有此标签的 Pod。
+    matchLabels:
+      app: test-jenkins
+  template:
+    metadata:
+      labels:
+        app: test-jenkins
+    spec:
+      containers:
+        - name: test-jenkins
+          image: test-jenkins:202402042000_708f6ea
+          ports:
+            - containerPort: 8090
