@@ -1,3 +1,6 @@
+# 构建镜像的文件
+# 执行脚本：docker build --build-arg JAR_FILE="test-jenkins-1.0-SNAPSHOT.jar" --build-arg SPRING_PROFILES_ACTIVE=dev --build-arg LOG_OUTPUT=/dev/null -t test-jenkins .
+# docker run -d --name=test-jenkins --restart always -p 8086:8086 test-jenkins:latest
 FROM openjdk:8-jdk
 # 添加存储空间
 VOLUME /home/sith/deploy/backend/app
