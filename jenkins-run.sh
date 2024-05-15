@@ -1,3 +1,7 @@
+# jenkins + docker :通过将指定jar包构建成镜像，再通过镜像运行容器的方式，启动微服务
+# 代码更新时：停止当前的容器，重新使用最新的jar包构建镜像，后面重新执行构建镜像，启动微服务
+# 执行脚本：sh jenkins-run.sh test-jenkins 8086 prod
+
 BUILD_ID=dontKillMe
 CURRENT_TIMESTAMP=$(date +%s)
 NOW=$(date -d @$CURRENT_TIMESTAMP "+%Y-%m-%d_%H-%M-%S")
@@ -18,4 +22,3 @@ else
 fi
 echo '================================== 执行 docker ps ========================'
 docker ps
-# sh run.sh test-jenkins 8086 prod
